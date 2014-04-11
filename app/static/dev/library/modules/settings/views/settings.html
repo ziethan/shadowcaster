@@ -1,0 +1,56 @@
+<div class="settings-view">
+    <div class="clearfix">
+        <div class="col-sm-6">
+            <div class="well clearfix">
+                <h2>Movies</h2>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Source dir" />
+                </div>
+                <div class="form-group">
+                    <label>Save transcoding in same directory?</label>
+                    <input class="pull-right" type="checkbox" ng-model="movieSave" />
+                </div>
+                <div class="form-group" ng-if="movieSave">
+                    <input class="form-control" placeholder="Output dir" />
+                </div>
+                <button class="btn btn-success pull-right">Save</button>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="well clearfix">
+                <h2>TV Shows</h2>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Source dir" />
+                </div>
+                <div class="form-group">
+                    <label>Save transcoding in same directory?</label>
+                    <input class="pull-right" type="checkbox" ng-model="tvSave" />
+                </div>
+                <div class="form-group" ng-if="tvSave">
+                    <input class="form-control" placeholder="Output dir" />
+                </div>
+                <button class="btn btn-success pull-right">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="col-sm-6">
+            <div class="well clearfix">
+                <h2>Music</h2>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Source dir" />
+                </div>
+                <button class="btn btn-success pull-right">Save</button>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="well clearfix">
+                <h2>Pictures</h2>
+                <div class="form-group">
+                    <input class="form-control" placeholder="Source dir" />
+                </div>
+                <button class="btn btn-success pull-right">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
