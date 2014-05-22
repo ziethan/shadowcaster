@@ -7,6 +7,7 @@
       , 'ui.select2'
       , 'pascalprecht.translate'
       , 'angular-growl'
+      , 'shadowcaster.shadowplayer'
       , 'navigation'
       , 'footer'
       , 'home'
@@ -17,8 +18,10 @@
       , 'settings'
     ])
     
-    .config(function($stateProvider, $urlRouterProvider, $logProvider, $translateProvider, growlProvider) {
+    .config(function($stateProvider, $sceProvider, $urlRouterProvider, $logProvider, $translateProvider, growlProvider) {
         $urlRouterProvider.otherwise('home');
+        
+        $sceProvider.enabled(false);
         
         $translateProvider.translations('en', {
             "LOGIN_USERNAME": "Username",
@@ -35,6 +38,28 @@
         $translateProvider.preferredLanguage('en');
         $logProvider.debugEnabled(false);
         growlProvider.globalTimeToLive(5000);
+    })
+    
+    .run(function($rootScope, $timeout, growl) {
+        $timeout(function() {
+            if(!window.chrome || !window.chrome.cast || !window.chrome.cast.isAvailable) {
+                growl.addWarnMessage('Cast is not available but you can still access your media in your browser.');
+            } else {
+                var sessionRequest = new window.chrome.cast.SessionRequest('6C26A4F8'),
+                    apiConfig = new window.chrome.cast.ApiConfig(sessionRequest, function(session) {
+                        $rootScope.session = session;
+                    }, function(r) {
+                        if(r === 'available') {
+                            $rootScope.castAvailable = window.chrome.cast.isAvailable;
+                            growl.addSuccessMessage('Chromecast is available. Happy casting!');
+                        } else {
+                            console.log(r);
+                            growl.addWarnMessage('Cast is not available but you can still access your media in your browser.');
+                        }
+                    });
+                    window.chrome.cast.initialize(apiConfig);
+            }
+        });
     })
     
 ;}(window, document, location, navigator, jQuery, angular, undefined));

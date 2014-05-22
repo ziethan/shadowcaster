@@ -24,31 +24,33 @@
         <meta name="msapplication-square310x310logo" content="/assets/icons/mstile-310x310.png">
         <meta name="msapplication-wide310x150logo" content="/assets/icons/mstile-310x150.png">
         
-        <title>Shadowcaster</title>
+        <title>ShadowCaster</title>
         
         <link href="/styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/styles/bootflat.min.css" rel="stylesheet" type="text/css" />
         <link href="/components/select2/select2.css" rel="stylesheet" type="text/css" />
         <link href="/components/select2/select2-bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="/components/angular-growl/angular-growl.min.css" rel="stylesheet" type="text/css" />
         <link href="/styles/main.css" rel="stylesheet" type="text/css" />
         
-        <script type="text/javascript">document.ontouchmove = function(event){event.preventDefault();}</script>
+<!--         <script type="text/javascript">document.ontouchmove = function(event){event.preventDefault();}</script> -->
     </head>
     <body>
-        <div growl></div>
         <div ui-view="navigation"></div>
         <div class="wrapper">
+            <div growl></div>
             <div ui-view="home"></div>
             <div ui-view="movies"></div>
             <div ui-view="music"></div>
-            <div ui-view="pictures"></div>
             <div ui-view="tv"></div>
+            <div ui-view="pictures"></div>
             <div ui-view="settings"></div>
+            <div ui-view="player"></div>
         </div>
         <div ui-view="footer"></div>
         
+        <script src="/components/chromecast/cast_sender.js" type="text/javascript"></script>
         <script src="/components/jquery/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="/components/lodash/lodash.min.js" type="text/javascript"></script>
         <script src="/components/bootstrap/bootstrap.min.js" type="text/javascript"></script>
         <script src="/components/moment/moment.js" type="text/javascript"></script>
         <script src="/components/select2/select2.js" type="text/javascript"></script>
@@ -69,6 +71,8 @@
         <script src="/components/ng-table/ng-table.js" type="text/javascript"></script>
         <script src="/components/angular-toggle-switch/angular-toggle-switch.min.js" type="text/javascript"></script>
         <script src="/components/ng-iscroll/ng-iscroll.min.js" type="text/javascript"></script>
+        
+        <script src="/library/directives/shadowplayer/shadowplayer.js" type="text/javascript"></script>
         
         <script src="/library/modules/navigation/controllers/navigationController.js" type="text/javascript"></script>
         <script src="/library/modules/navigation/models/navigationModel.js" type="text/javascript"></script>
@@ -99,6 +103,7 @@
         <script src="/library/modules/settings/settings.js" type="text/javascript"></script>
         
         <script src="/library/modules/tv/controllers/tvController.js" type="text/javascript"></script>
+        <script src="/library/modules/tv/controllers/tvPlayController.js" type="text/javascript"></script>
         <script src="/library/modules/tv/models/tvModel.js" type="text/javascript"></script>
         <script src="/library/modules/tv/tv.js" type="text/javascript"></script>
         

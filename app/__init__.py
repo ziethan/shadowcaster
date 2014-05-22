@@ -4,8 +4,10 @@ from pymongo import Connection
 from flask import Flask, render_template, g, request
 
 app = Flask(__name__, static_folder='static/dev', static_url_path='')
+# app.use_x_sendfile = True
 
-db = Connection(host="mongodb://localhost")
+db_conn = Connection(host="mongodb://localhost")
+db = db_conn['shadowcaster']
 
 from app.movies import movies
 from app.tv import tv

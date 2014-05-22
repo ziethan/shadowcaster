@@ -1,7 +1,30 @@
 <div class="tv-view">
     <div ng-if="!tvshows" class="col-sm-12">
-        <div class="well center">
-            <h3>Sorry, it seems you don't have any tv shows available :(</h3>
+        <div class="panel panel-warning">
+            <div class="panel-heading">Uh-Oh! :(</div>
+            <div class="panel center">
+                <p>It seems you don't have any tv shows available.
+                    Check out your settings to make sure you set your path!
+                </p>
+            </div>
         </div>
+    </div>
+    <div ng-if="tvshows" class="col-sm-12">
+        <accordion close-others="oneAtATime">
+            <accordion-group is-open="isopen">
+                <accordion-heading>
+                    Community <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                </accordion-heading>
+                <accordion-group is-open="isopen">
+                    <accordion-heading>
+                        Season 5 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': isopen, 'glyphicon-chevron-right': !isopen}"></i>
+                    </accordion-heading>
+                    <div class="panel panel-primary" ng-repeat="show in tvshows" ng-click="getShow(show._id.$oid)">
+                        <div class="panel-heading">{{show.name}}</div>
+                        <div class="panel-body">{{show.mimeType}}</div>
+                    </div>
+                </accordion-group>
+            </accordion-group>
+        </accordion>
     </div>
 </div>

@@ -3,6 +3,7 @@
     
     angular.module('tv', [
         'tv.controller'
+      , 'tv.play.controller'
       , 'tv.model'
     ])
     
@@ -33,6 +34,33 @@
               , 'tv': {
                     controller: 'tvController'
                   , templateUrl: '/library/modules/tv/views/tv.html'
+                }
+            }
+        }).state('tvplay', {
+            url: '/tvPlay/:showId'
+          , onEnter: function($timeout) {
+                $timeout(function() {
+                    $('[ui-view=navigation]').css({display:'block'});
+                    $('[ui-view=footer]').css({display:'block'});
+                    $('[ui-view=player]').css({display:'block'});
+                    $('[ui-view=tv]').css({display:'none'});
+                });
+            }
+          , onExit: function() {
+                $('[ui-view=player]').css({display:'block'});
+            }
+          , views: {
+                'navigation': {
+                    controller: 'navigationController'
+                  , templateUrl: '/library/modules/navigation/views/navigation.html'
+                }
+              , 'footer': {
+                    controller: 'footerController'
+                  , templateUrl: '/library/modules/footer/views/footer.html'
+                }
+              , 'player': {
+                    controller: 'tvPlayController'
+                  , templateUrl: '/library/modules/tv/views/play.html'
                 }
             }
         });

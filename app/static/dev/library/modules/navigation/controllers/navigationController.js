@@ -3,7 +3,7 @@
     
     angular.module('navigation.controller', [])
     
-    .controller('navigationController', function($scope, $state, growl) {
+    .controller('navigationController', function($scope, $rootScope, $state, growl) {
         
     })
     
