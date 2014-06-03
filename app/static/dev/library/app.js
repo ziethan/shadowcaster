@@ -57,7 +57,7 @@
                             growl.addWarnMessage('Cast is not available but you can still access your media in your browser.');
                         }
                     });
-                    window.chrome.cast.initialize(apiConfig);
+                window.chrome.cast.initialize(apiConfig);
             }
         });
     })

@@ -4,7 +4,7 @@
     angular.module('tv.play.controller', [])
 
     .controller('tvPlayController', function($scope, $state, $sce, growl, tvService) {
-        var src = 'http://192.168.2.10/tv/'+$state.params.showId
+        var src = 'http://192.168.1.115/tv/'+$state.params.showId
         $sce.trustAsResourceUrl(src);
         $scope.src = src;
     })
